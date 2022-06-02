@@ -57,6 +57,25 @@ public:
         other.Delete();
     }
 
+    auto Begin() {
+        if ((ObjectType() == "Map") || (ObjectType() == "Vector")) {
+            return object.begin();
+        }
+    }
+    auto End() {
+        if ((ObjectType() == "Map") || (ObjectType() == "Vector")) {
+            return object.end();
+        }
+    }
+    auto &operator++() {
+        if ((ObjectType() == "Map") || (ObjectType() == "Vector")) {
+            return object.begin()+1;
+        }
+    }
+    T& operator*() {
+        return object;
+    }
+
 private:
     T object;
 };
